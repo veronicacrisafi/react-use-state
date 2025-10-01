@@ -1,25 +1,24 @@
 import { useState } from 'react'
 import languages from '../data/languages'
-import { act } from 'react'
 
-export default function AppMain({ items }) {
 
-    const [active, setActive] = useState(1)
+export default function AppMain() {
 
-    function handleClick(e) {
-        const clickedItemId = Number(e.target.getAttribute('data-id'))
-        setActive(clickedItemId)
+    const [active, setActive] = useState(1);
+    const [showMore, setShowMore] = useState(false);
+
+    function handleClick() {
+        setShowMore(!showMore)
     }
 
     return (
         <>
             <div className="items">
+
                 {languages.map((item) => (
-                    <div className='item' key={item.id}>
-                        <button data-id={item.id} onClick={handleClick}>{item.title}</button>
-                        {active == item.id &&
-                            <p>{item.description}</p>
-                        }
+                    <div className='item'>
+                        <button data-id={item.id} onClick={handleClick} key={item.id}>{item.title}</button>
+
                     </div>
                 ))}
 
