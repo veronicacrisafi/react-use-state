@@ -18,11 +18,14 @@ export default function AppMain() {
                 {languages.map((item) => (
                     <div className='item'>
                         <button data-id={item.id} onClick={handleClick} key={item.id}>{item.title}</button>
-
+                        <p>{item.description}</p>
                     </div>
+
+
                 ))}
 
             </div>
+
 
 
 
