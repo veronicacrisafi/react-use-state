@@ -27,6 +27,7 @@ export default function AppMain() {
 
             {/* creo la card con il paragrafo e al suo interno prendo l'array di oggetti e gli dico di prendere il suo id */}
             <div className="card">
+                <h2>{languages[idValue].title}</h2>
                 <p>{languages[idValue].description}</p>
             </div>
         </>
