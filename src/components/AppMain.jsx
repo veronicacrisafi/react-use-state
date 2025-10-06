@@ -1,6 +1,7 @@
 import { useState } from 'react' // importo l'hook da react 
 import languages from '../data/languages'//importo l'array di oggetti
 import AppCard from './AppCard';
+import AppButton from './AppButton';
 
 export default function AppMain() {
     const [idValue, setIdupdate] = useState(null);//destrutturo e prendo il valore dell'id e il valore dell'id aggiornato
@@ -16,21 +17,22 @@ export default function AppMain() {
         <>
             <div className="container items">
                 {languages.map((item, idItem) => (//iterno all'interno dell'array di oggetti
-                    <button className={`btn btn-${idItem === idValue ? 'primary' : 'light'} mx-3 my-3`}
-                        key={item.id}//chiave
-                        data-id={idItem}//indice
-                        onClick={handleClick}//quando si clicca il button chiama la funzione
-                    >
-                        {item.title}
-                    </button>
+
+                    <AppButton key={item.id}
+                        idItem={idItem}
+                        idValue={idValue}
+                        title={item.title}
+                        handleClick={handleClick} />
+
                 ))}
             </div>
-            {idValue === null ? (
+            {idValue === null ?
                 <p>nessun linguaggio selezionato</p>
-            ) : (
-                <AppCard title={languages[idValue].title} description={languages[idValue].description} />
+                :
+                <AppCard title={languages[idValue].title}
+                    description={languages[idValue].description} />
 
-            )}
+            }
         </>
     )
 
